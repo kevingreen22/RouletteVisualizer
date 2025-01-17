@@ -197,7 +197,7 @@ fileprivate struct BettingCellView: View {
     
     var body: some View {
         Rectangle()
-            .fill(betPlaceholder.numbers.count == 1 ? betPlaceholder.numbers.first!.color : Color.table)
+            .fill(betPlaceholder.numbers.count == 1 ? betPlaceholder.numbers.first!.color : ((betPlaceholder.title.lowercased() == "red" || betPlaceholder.title.lowercased() == "black") ? betPlaceholder.numbers.first!.color : Color.table) )
             .strokeBorder(Color.white, lineWidth: lineWidth)
             .overlay(Text(betPlaceholder.title).foregroundStyle(.white).fontWeight(.semibold))
             .overlay {
