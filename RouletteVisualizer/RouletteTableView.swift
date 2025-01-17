@@ -197,7 +197,7 @@ fileprivate struct BettingCellView: View {
     
     var body: some View {
         Rectangle()
-            .fill(betPlaceholder.numbers.count == 1 ? betPlaceholder.numbers.first!.color : ((betPlaceholder.title.lowercased() == "red" || betPlaceholder.title.lowercased() == "black") ? betPlaceholder.numbers.first!.color : Color.table) )
+            .fill(betPlaceholder.numbers.count == 1 ? betPlaceholder.numbers.first!.color : ((betPlaceholder.title.lowercased() == "red" || betPlaceholder.title.lowercased() == "black") ? betPlaceholder.numbers.first!.color : bettingVM.currentTableColor.asColor) )
             .strokeBorder(Color.white, lineWidth: lineWidth)
             .overlay(Text(betPlaceholder.title).foregroundStyle(.white).fontWeight(.semibold))
             .overlay {
@@ -228,61 +228,12 @@ fileprivate struct BettingCellView: View {
 }
 
 
-//fileprivate struct BettingCellView: View {
-//    var numbers: NumericalBet
-//    var color: Color
-//    var width: CGFloat? = nil
-//    var height: CGFloat? = nil
-//    var lineWidth: CGFloat = 1
-//    
-//    @State private var scale: CGFloat = 0.0
-//    
-//    @EnvironmentObject var bettingVM: BettingsViewModel
-//    
-//    init(numbers: NumericalBet, color: Color, width: CGFloat? = nil, height: CGFloat? = nil, lineWidth: CGFloat = 1) {
-//        self.numbers = numbers
-//        self.color = color
-//        self.width = width
-//        self.height = height
-//        self.lineWidth = lineWidth
-//    }
-//    
-//    var body: some View {
-//        Rectangle()
-//            .fill(color)
-//            .strokeBorder(Color.white, lineWidth: lineWidth)
-//            .overlay(Text(numbers.title).foregroundStyle(.white).fontWeight(.semibold))
-//            .overlay {
-//                Circle()
-//                    .fill(Color.yellow)
-//                    .scaledToFit()
-//                    .padding(3)
-//                    .opacity(0.6)
-//                    .scaleEffect(scale)
-//            } // cell-selected marker
-//            .frame(width: width, height: height)
-//            .animation(.easeInOut, value: bettingVM.selectedNumbers)
-//            .animation(.easeInOut, value: scale)
-//            .onTapGesture {
-//                // Toggles adding to 'selected bets'
-//                bettingVM.updateSelected(bet: numbers, isAdding: scale == 0)
-//                (scale == 0.0) ? (scale = 1.0) : (scale = 0.0)
-//            }
-//            .onChange(of: bettingVM.selectedNumbers) { _, newValue in
-//                // Removes all highlights from wheel and grid
-//                if newValue.values.allSatisfy({ $0 == 0 }) {
-//                    scale = 0.0
-//                }
-//            }
-//    }
-//    
-//}
-
-
-
+// MARK: Preview
 #Preview {
+    @Previewable @StateObject var bettingVM = BettingsViewModel()
+    
     ZStack {
-        Color.table.ignoresSafeArea()
+        bettingVM.currentTableColor.asColor.ignoresSafeArea()
         RouletteTableView(wheelType: .constant(.american), cellWidth: 40, cellHeight: 40)
             .environmentObject(BettingsViewModel())
     }

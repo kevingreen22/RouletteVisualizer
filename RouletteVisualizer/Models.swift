@@ -7,6 +7,28 @@
 
 import SwiftUI
 
+//struct TableColor {
+//    static var green = Color.tableGreen
+//    static var black = Color.tableBlack
+//    static var blue = Color.tableBlue
+//    static var purple = Color.tablePurple
+//}
+
+enum TableColor: String {
+    case green
+    case black
+    case blue
+    case purple
+    
+    var asColor: Color {
+        switch self {
+        case .green: Color.tableGreen
+        case .black: Color.tableBlack
+        case .blue: Color.tableBlue
+        case .purple: Color.tablePurple
+        }
+    }
+}
 
 // General Number Model
 struct RouletteNumber: Equatable, Hashable {
@@ -14,7 +36,7 @@ struct RouletteNumber: Equatable, Hashable {
     var color: Color
     
     static func get(_ number: Int) -> RouletteNumber {
-        guard let rNum = Wheel.numbers.first(where: { $0.num == number }) else { return RouletteNumber(num: -100, color: .table) }
+        guard let rNum = Wheel.numbers.first(where: { $0.num == number }) else { return RouletteNumber(num: -100, color: .clear) }
         return rNum
     }
     
@@ -401,175 +423,4 @@ struct Wheel {
 }
 
 
-
-
-
-
-//struct NumericalBet: Equatable {
-//    var title: String
-//    var bets: [Int]
-//}
-//
-//struct BettingGroup {
-//    static var _1st_12 = [1,2,3,4,5,6,7,8,9,10,11,12]
-//    
-//    static var _2nd_12 = [13,14,15,16,17,18,19,20,21,22,23,24]
-//    
-//    static var _3rd_12 = [25,26,27,28,29,30,31,32,33,34,35,36]
-//    
-//    static var _1_18 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]
-//    
-//    static var _19_36 = [19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36]
-//    
-//    static var _1st_column = [1,4,7,10,13,16,19,22,25,28,31,34]
-//    
-//    static var _2nd_column = [2,5,8,11,14,17,20,23,26,29,32,35]
-//    
-//    static var _3rd_column = [3,6,9,12,15,18,21,24,27,30,33,36]
-//    
-//    static var _EVEN = [2,4,6,8,0,12,14,16,18,20,22,24,26,28,30,32,34,36]
-//    
-//    static var _ODD = [1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35]
-//    
-//    static var _Red = [1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36]
-//    
-//    static var _Black = [2,4,6,8,10,11,13,15,17,20,22,24,26,28,29,31,33,35]
-//    
-//    static var _00 = [-1]
-//    
-//}
-//
-//struct NumericalBets {
-//    
-//    static var _1st_12 = NumericalBet(title: "1st 12", bets: BettingGroup._1st_12)
-//    
-//    static var _2nd_12 = NumericalBet(title: "2nd 12", bets: BettingGroup._2nd_12)
-//    
-//    static var _3rd_12 = NumericalBet(title: "3rd 12", bets: BettingGroup._3rd_12)
-//    
-//    static var _1_18 = NumericalBet(title: "1-18", bets: BettingGroup._1_18)
-//    
-//    static var _19_36 = NumericalBet(title: "19-36", bets: BettingGroup._19_36)
-//    
-//    static var _1st_column = NumericalBet(title: "1st", bets: BettingGroup._1st_column)
-//    
-//    static var _2nd_column =  NumericalBet(title: "2nd", bets: BettingGroup._2nd_column)
-//    
-//    static var _3rd_column = NumericalBet(title: "3rd", bets: BettingGroup._3rd_column)
-//    
-//    static var _EVEN = NumericalBet(title: "EVEN", bets: BettingGroup._EVEN)
-//    
-//    static var _ODD = NumericalBet(title: "ODD", bets: BettingGroup._ODD)
-//    
-//    static var _Red = NumericalBet(title: "Red", bets: BettingGroup._Red)
-//    
-//    static var _Black = NumericalBet(title: "Black", bets: BettingGroup._Black)
-//    
-//    static var _00 = NumericalBet(title: "00", bets: BettingGroup._00)
-//    
-//}
-
-
-
-
-//enum WheelType {
-//    case american, european
-//}
-//
-//struct WheelSection: Equatable, Hashable, Identifiable {
-//    var id: Int = 1 // { return number }
-//    let number: Int
-//    let color: Color
-//}
-//
-//struct Wheel {
-//    static func sections(for wheelType: WheelType) -> [WheelSection] {
-//        switch wheelType {
-//        case .american: return americanSections
-//        case .european: return europeanSections
-//        }
-//    }
-//    
-//    private static let americanSections: [WheelSection] = [
-//        WheelSection(number: -1, color: .green),
-//        WheelSection(number: 1, color: .red),
-//        WheelSection(number: 13, color: .black),
-//        WheelSection(number: 36, color: .red),
-//        WheelSection(number: 24, color: .black),
-//        WheelSection(number: 3, color: .red),
-//        WheelSection(number: 15, color: .black),
-//        WheelSection(number: 34, color: .red),
-//        WheelSection(number: 22, color: .black),
-//        WheelSection(number: 5, color: .red),
-//        WheelSection(number: 17, color: .black),
-//        WheelSection(number: 32, color: .red),
-//        WheelSection(number: 20, color: .black),
-//        WheelSection(number: 7, color: .red),
-//        WheelSection(number: 11, color: .black),
-//        WheelSection(number: 30, color: .red),
-//        WheelSection(number: 26, color: .black),
-//        WheelSection(number: 9, color: .red),
-//        WheelSection(number: 28, color: .black),
-//        WheelSection(number: 0, color: .green),
-//        WheelSection(number: 2, color: .black),
-//        WheelSection(number: 14, color: .red),
-//        WheelSection(number: 35, color: .black),
-//        WheelSection(number: 23, color: .red),
-//        WheelSection(number: 4, color: .black),
-//        WheelSection(number: 16, color: .red),
-//        WheelSection(number: 33, color: .black),
-//        WheelSection(number: 21, color: .red),
-//        WheelSection(number: 6, color: .black),
-//        WheelSection(number: 18, color: .red),
-//        WheelSection(number: 31, color: .black),
-//        WheelSection(number: 19, color: .red),
-//        WheelSection(number: 8, color: .black),
-//        WheelSection(number: 12, color: .red),
-//        WheelSection(number: 29, color: .black),
-//        WheelSection(number: 25, color: .red),
-//        WheelSection(number: 10, color: .black),
-//        WheelSection(number: 27, color: .red)
-//    ]
-//
-//    private static let europeanSections: [WheelSection] = [
-//        WheelSection(number: 32, color: .red),
-//        WheelSection(number: 15, color: .black),
-//        WheelSection(number: 19, color: .red),
-//        WheelSection(number: 4, color: .black),
-//        WheelSection(number: 21, color: .red),
-//        WheelSection(number: 2, color: .black),
-//        WheelSection(number: 25, color: .red),
-//        WheelSection(number: 17, color: .black),
-//        WheelSection(number: 34, color: .red),
-//        WheelSection(number: 6, color: .black),
-//        WheelSection(number: 27, color: .red),
-//        WheelSection(number: 13, color: .black),
-//        WheelSection(number: 36, color: .red),
-//        WheelSection(number: 11, color: .black),
-//        WheelSection(number: 30, color: .red),
-//        WheelSection(number: 8, color: .black),
-//        WheelSection(number: 23, color: .red),
-//        WheelSection(number: 10, color: .black),
-//        WheelSection(number: 5, color: .red),
-//        WheelSection(number: 24, color: .black),
-//        WheelSection(number: 16, color: .red),
-//        WheelSection(number: 33, color: .black),
-//        WheelSection(number: 1, color: .red),
-//        WheelSection(number: 20, color: .black),
-//        WheelSection(number: 14, color: .red),
-//        WheelSection(number: 31, color: .black),
-//        WheelSection(number: 9, color: .red),
-//        WheelSection(number: 22, color: .black),
-//        WheelSection(number: 18, color: .red),
-//        WheelSection(number: 29, color: .black),
-//        WheelSection(number: 7, color: .red),
-//        WheelSection(number: 28, color: .black),
-//        WheelSection(number: 12, color: .red),
-//        WheelSection(number: 35, color: .black),
-//        WheelSection(number: 3, color: .red),
-//        WheelSection(number: 26, color: .black),
-//        WheelSection(number: 0, color: .green)
-//    ]
-//
-//}
 

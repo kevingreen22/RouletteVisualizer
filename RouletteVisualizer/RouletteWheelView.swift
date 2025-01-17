@@ -69,8 +69,10 @@ struct RouletteWheelView: View {
 
 
 #Preview {
+    @Previewable @State var bettingVM = BettingsViewModel()
+    
     ZStack {
-        Color.table.ignoresSafeArea()
+        bettingVM.currentTableColor.asColor.ignoresSafeArea()
         
         RouletteWheelView(wheelType: .constant(.american))
             .frame(width: 250, height: 250)

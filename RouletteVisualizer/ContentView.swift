@@ -17,7 +17,7 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            Color.table
+            bettingVM.currentTableColor.asColor
             
             VStack(alignment: .center) {
                 TitleMenu
@@ -65,7 +65,7 @@ struct ContentView: View {
                         Image(systemName: "checkmark")
                     }
                 }
-            }
+            } // American wheel Label
             Button {
                 wheelType = .european
             } label: {
@@ -75,14 +75,62 @@ struct ContentView: View {
                         Image(systemName: "checkmark")
                     }
                 }
-            }
+            } // European Wheel Label
+            Menu {
+                Button {
+                    bettingVM.currentTableColor = .green
+                } label: {
+                    HStack {
+                        Text("Green Felt")
+                        if bettingVM.currentTableColor == .green {
+                            Image(systemName: "checkmark")
+                        }
+                    }
+                }
+                Button {
+                    bettingVM.currentTableColor = .black
+                } label: {
+                    HStack {
+                        Text("Black Felt")
+                        if bettingVM.currentTableColor == .black {
+                            Image(systemName: "checkmark")
+                        }
+                    }
+                }
+                Button {
+                    bettingVM.currentTableColor = .blue
+                } label: {
+                    HStack {
+                        Text("Blue Felt")
+                        if bettingVM.currentTableColor == .blue {
+                            Image(systemName: "checkmark")
+                        }
+                    }
+                }
+                Button {
+                    bettingVM.currentTableColor = .purple
+                } label: {
+                    HStack {
+                        Text("Purple Felt")
+                        if bettingVM.currentTableColor == .purple {
+                            Image(systemName: "checkmark")
+                        }
+                    }
+                }
+            } label: {
+                HStack {
+                    Text("Table Color")
+                    Image(systemName: "tablecells.fill.badge.ellipsis")
+                }
+            } // Table Color Menu
         } label: {
             HStack {
                 Text("Roulette Visualizer")
                     .font(.largeTitle)
                 Image(systemName: "chevron.down")
             }
-        }.foregroundStyle(Color.white)
+        } // Main Title label
+        .foregroundStyle(Color.white)
     }
     
     fileprivate var ClearAllButton: some View {
@@ -92,7 +140,7 @@ struct ContentView: View {
             Text("Clear All").font(.title)
         }
         .buttonStyle(.borderedProminent)
-        .foregroundStyle(Color.table)
+        .foregroundStyle(bettingVM.currentTableColor.asColor)
         .tint(.white)
     }
     
@@ -106,7 +154,7 @@ struct ContentView: View {
         }
         .clipShape(Circle())
         .buttonStyle(.borderedProminent)
-        .foregroundStyle(Color.table)
+        .foregroundStyle(bettingVM.currentTableColor.asColor)
         .tint(.white)
     }
     
