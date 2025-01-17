@@ -6,7 +6,7 @@
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Flascic%2FUIOnboarding%2Fbadge%3Ftype%3Dplatforms)](https://kevingreen22.github.io)
 
 
-[![GitHub stars](https://img.shields.io/github/stars/JamesSedlacek/OnboardingKit.svg)](https://kevingreen22.github.io)
+[![GitHub stars](https://img.shields.io/github/stars/kevingreen22/rouletteVisualizer.svg)](https://kevingreen22.github.io)
 
 # Roulette Visualizer
 
