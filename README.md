@@ -1,11 +1,6 @@
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-
 ![SwiftUI Badge](https://img.shields.io/badge/SwiftUI-orange?style=for-the-badge&logo=swift&logoColor=orange&logoSize=auto&labelColor=black&color=blue)
-
-[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Flascic%2FUIOnboarding%2Fbadge%3Ftype%3Dswift-versions)](https://kevingreen22.github.io)
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Flascic%2FUIOnboarding%2Fbadge%3Ftype%3Dplatforms)](https://kevingreen22.github.io)
-
-
 [![GitHub stars](https://img.shields.io/github/stars/kevingreen22/rouletteVisualizer.svg)](https://kevingreen22.github.io)
 
 # Roulette Visualizer
