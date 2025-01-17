@@ -22,7 +22,7 @@ If you like the app, please do not forget to `star ★` this repository and foll
 
 ## Screenshots
 
-![App Screenshot](https://github.com/kevingreen22/rouletteVisualizer/rouletteVisualizer/blob/developer/readMe_resources/screenshot.png/468x300?text=App+Screenshot+Here)
+![App Screenshot](https://github.com/kevingreen22/RouletteVisualizer/rouletteVisualizer/blob/developer/readMe_resources/screenshot.png/468x300?text=App+Screenshot+Here)
 
 
 
