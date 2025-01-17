@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import WebKit
+import KGViews
 
 struct ContentView: View {
     @State private var wheelType: WheelType = .american
-    
+    @State private var showWebView = false
     @EnvironmentObject var bettingVM: BettingsViewModel
 
     
@@ -20,19 +22,36 @@ struct ContentView: View {
             VStack(alignment: .center) {
                 TitleMenu
                 Spacer()
-                ClearAllButton.padding(.bottom, 4)
+                HStack {
+                    ClearAllButton.padding(.bottom, 4)
+                }
             }.padding(.vertical)
             
             HStack(spacing: 20) {
                 RouletteWheelView(wheelType: $wheelType)
                     .frame(width: 260, height: 260)
                     .padding(.leading, 10)
-                RouletteTableView(wheelType: $wheelType, /*cellWidth: 50,*/ cellHeight: 50)
+                RouletteTableView(wheelType: $wheelType, cellHeight: 50)
                     .padding(.trailing, 40)
             }
         }
+        .overlay(alignment: .bottomTrailing) {
+            ShowWebViewButton
+                .padding([.trailing, .bottom], 30)
+        }
+        
         .ignoresSafeArea()
         .frame(maxWidth: .infinity)
+                
+        .fullScreenCover(isPresented: $showWebView) {
+            WebKitView(url: URL(string: "https://www.roulettestar.com/guide/bets-odds/")!)
+                .overlay(alignment: .topTrailing) {
+                    CloseButton(iconName: "xmark", withBackground: true) {
+                        showWebView.toggle()
+                    }.padding([.top, .trailing], 30)
+                }
+                .ignoresSafeArea()
+        }
     }
     
     fileprivate var TitleMenu: some View {
@@ -72,6 +91,20 @@ struct ContentView: View {
         } label: {
             Text("Clear All").font(.title)
         }
+        .buttonStyle(.borderedProminent)
+        .foregroundStyle(Color.table)
+        .tint(.white)
+    }
+    
+    fileprivate var ShowWebViewButton: some View {
+        Button {
+            showWebView.toggle()
+        } label: {
+            Image(systemName: "percent")
+                .resizable()
+                .frame(width: 20, height: 20)
+        }
+        .clipShape(Circle())
         .buttonStyle(.borderedProminent)
         .foregroundStyle(Color.table)
         .tint(.white)
